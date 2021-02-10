@@ -1,0 +1,41 @@
+.search {
+  background-color: #fbfbfb !important;
+}
+.form-control-borderless {
+  border: none;
+}
+.form-control {
+  border-radius: 1.25rem !important;
+}
+.text-body {
+  padding-top: 10px !important;
+}
+.card {
+  border: 0px !important;
+}
+.card-body {
+  background-color: #fbfbfb !important;
+}
+.list {
+  padding-right: 60px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.searchResult {
+  display: flex !important;
+  justify-content: center !important;
+  padding-top: 50px !important;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}

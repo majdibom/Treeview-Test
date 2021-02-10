@@ -1,0 +1,77 @@
+<div id="test" class="tree">
+  <ul>
+    <li
+      *ngFor="let node of tree; let index = index"
+      draggable="true"
+      ondrop="drop(event)"
+      ondragover="allowDrop(event)"
+      draggable="true"
+      ondragstart="drag(event)"
+      id="{{ node.id }}"
+      class="parent_li"
+    >
+      <!-- CRUD buttons -->
+      <div class="wrapper">
+        <span *ngIf="edit == false"
+          ><b>{{ node.id }}:</b> {{ node.title }}</span
+        >
+        <input
+          *ngIf="edit == true && idNode == node.id"
+          type="text"
+          class="input"
+          placeholder="Title"
+          [(ngModel)]="nodeToEdit.title"
+          (keyup)="onKeyUp($event)"
+        />
+        <input
+          *ngIf="(add == true || addLeaf == true) && idNode == node.id"
+          type="text"
+          class="input"
+          placeholder="Title"
+          [(ngModel)]="title"
+        />
+        <button
+          *ngIf="(add == true || addLeaf == true) && idNode == node.id"
+          class="btn btn-outline-secondary btn-circle"
+          (click)="addNode(index)"
+        >
+          <i class="bx bx-save"></i></button
+        >&nbsp;
+        <div class="button">
+          <button
+            class="btn btn-outline-secondary btn-sm btn-circle"
+            (click)="add = true; idNode = node.id"
+          >
+            <i class="bx bx-plus"></i></button
+          >&nbsp;
+          <button
+            (click)="addLeaf = true; idNode = node.id"
+            class="btn btn-outline-secondary btn-sm btn-circle"
+          >
+            <i class="bx bxs-tree"></i></button
+          >&nbsp;
+          <button
+            type="button"
+            (click)="openEditModal(node, index)"
+            class="btn btn-outline-secondary btn-sm btn-circle"
+          >
+            <i class="bx bx-edit"></i></button
+          >&nbsp;
+          <button
+            (click)="delete(index)"
+            class="btn btn-outline-secondary btn-sm btn-circle"
+          >
+            <i class="bx bx-trash"></i>
+          </button>
+        </div>
+        <!-- end CRUD buttons -->
+      </div>
+      <!-- node component -->
+      <app-node
+        *ngIf="node.children"
+        [id]="node.id"
+        [tree]="node.children"
+      ></app-node>
+    </li>
+  </ul>
+</div>
